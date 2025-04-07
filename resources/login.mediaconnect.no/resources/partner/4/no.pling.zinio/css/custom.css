@@ -25,7 +25,7 @@
   height: 116px;
   padding: 10px 10px;
   border-bottom: 2px solid #D60000;
-  background-color: #D60000;
+  background-color: #1e282d;
   z-index: 9999;
 }
 
@@ -43,6 +43,7 @@
 
 .logoDiv img.logo {
   padding: 0 9px;
+  max-height: 96px;
 }
 
 #loginForm {
