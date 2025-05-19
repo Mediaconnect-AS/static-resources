@@ -65,7 +65,9 @@
     "selfservice.dagligvarehandelen": "api/client/config?clientId=selfservice.dagligvarehandelen",
     "selfservice.grenda": "api/client/config?clientId=selfservice.grenda",
     "selfservice.firdatidend": "api/client/config?clientId=selfservice.firdatidend",
-    "selfservice.hordalandfolkeblad": "api/client/config?clientId=selfservice.hordalandfolkeblad"
+    "selfservice.hordalandfolkeblad": "api/client/config?clientId=selfservice.hordalandfolkeblad",
+    "selfservice.vg": "api/client/config?clientId=selfservice.vg",
+    "selfservice.aftenposten": "api/client/config?clientId=selfservice.aftenposten"
   },
   "messages": {
     "default-message": {
