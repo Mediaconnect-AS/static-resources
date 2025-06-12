@@ -107,6 +107,10 @@
     display: inline-block;
   }
 
+  .logoDiv img.logo {
+    padding: 6px 73px;
+  }
+
   .loginInner .logoDiv  {
     position: fixed;
     top: 0;
@@ -117,10 +121,6 @@
     border-bottom: 2px solid #D60000;
     background-color: #1e282d;
     z-index: 9999;
-  }
-
-  .logoDiv img.logo {
-    padding: 6px 73px;
   }
 
   .guiVersion2 .heading {
