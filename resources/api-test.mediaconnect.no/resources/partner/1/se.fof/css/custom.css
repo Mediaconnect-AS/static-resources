@@ -31,7 +31,7 @@
 #sequence-login #state-46 #headingColumn,
 #sequence-login #state-48 #headingColumn,
 #sequence-login #state-49 #headingColumn{
-    display: none;
+    display: block;
 }
 
 #showSocialLoginButtonsDiv {
