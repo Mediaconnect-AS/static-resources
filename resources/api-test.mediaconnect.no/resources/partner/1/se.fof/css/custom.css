@@ -154,7 +154,7 @@ input:focus {
     border: none;
     box-shadow: none;
     border-radius: 2%;
-    border: 4px solid #e8530f;
+    border: 2px solid #e8530f;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 12px 24px;
 }
 
