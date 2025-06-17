@@ -709,3 +709,10 @@ input:focus {
     background-color: #e8530f !important;
     color: #fff;
 }
+
+#mcCaptchaWidget {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
