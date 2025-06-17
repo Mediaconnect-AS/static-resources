@@ -75,12 +75,14 @@
 }
 
 .guiVersion2 .button  {
-    background-color: black !important;
+    background-color: #fff !important;
     cursor: pointer;
     font-weight: 700 !important;
-    border-radius: 25px;
+    border-radius: 3px;
     width: fit-content;
     text-transform: none;
+    border-color: #e8530f;
+    color: #e8530f;
 }
 
 /*
@@ -134,15 +136,15 @@ input:focus {
     top: 0;
     left: 0;
     width: 100%;
-    height: 70px;
-    padding: 10px 10px;
+    height: 170px;
+    padding: 50px 50px;
     border-bottom: 1px solid #13100e;
     background-color: #13100e;
     z-index: 9999;
 }
 
 .logoDiv img.logo {
-    max-width: 520px;
+    max-width: 620px;
 }
 
 .loginFrame {
@@ -691,4 +693,26 @@ input:focus {
 
 .anotherWayLink img{
     display: none;
+}
+
+.guiVersion2 a {
+    color: #13100e;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.guiVersion2 a:hover {
+    text-decoration: underline;
+}
+
+.guiVersion2 .button:hover {
+    background-color: #e8530f !important;
+    color: #fff;
+}
+
+#mcCaptchaWidget {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
