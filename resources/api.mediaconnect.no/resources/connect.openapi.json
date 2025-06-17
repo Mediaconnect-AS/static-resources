@@ -1242,7 +1242,6 @@
         "security": [
           {
             "Client_Credentials_Production": [
-              "read",
               "read"
             ]
           }
@@ -1323,7 +1322,6 @@
         "security": [
           {
             "Client_Credentials_Production": [
-              "read",
               "read"
             ]
           }
@@ -1534,7 +1532,6 @@
         "security": [
           {
             "Client_Credentials_Production": [
-              "read",
               "read"
             ]
           }
@@ -1814,7 +1811,6 @@
         "security": [
           {
             "Client_Credentials_Production": [
-              "read",
               "read"
             ]
           }
@@ -2013,6 +2009,15 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "marketing",
+            "in": "query",
+            "description": "Informs if marketing data should be return in the response:\n* **true**: Marketing data should be included in the response.\n* **false**: Marketing data should not be included in the response.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
           }
         ],
         "responses": {
@@ -2040,13 +2045,17 @@
                           "description": "Newspaper about ICT"
                         }
                       ],
-                      "renewal": [
-                        {
-                          "renewalPrice": "199",
-                          "periodLength": "1",
-                          "periodType": "months"
-                        }
-                      ]
+                      "renewal": {
+                        "renewalPrice": "199",
+                        "periodLength": "1",
+                        "periodType": "months"
+                      },
+                      "marketing": {
+                        "project": "Kundeservice",
+                        "market": "ICT",
+                        "activity": "SNU",
+                        "salesMethod": "TM"
+                      }
                     }
                   ]
                 }
@@ -2189,7 +2198,6 @@
         "security": [
           {
             "Client_Credentials_Production": [
-              "read",
               "read"
             ]
           }
@@ -2579,7 +2587,6 @@
         "security": [
           {
             "Client_Credentials_Production": [
-              "read",
               "read"
             ]
           }
@@ -2677,7 +2684,6 @@
         "security": [
           {
             "Client_Credentials_Production": [
-              "read",
               "read"
             ]
           }
@@ -2785,7 +2791,7 @@
       "post": {
         "summary": "Register order - client mode",
         "deprecated": false,
-        "description": "Only the client needs to be logged in to use this endpoint. The user does not need to be logged in, [click here](mediaconnect-api-reference-934439m0#about-the-client-mode) to read more.\n\nAPI for creating an order. The order can contain one or more lines. Each line may contain a receiver. If Marketing coupon is used both marketing coupon, i.e `marketingCouponCode` and `marketingCouponNumber`, fields are required.\n\nThere are several possible payment methods. Payment provider configuration is needed to use these payment methods, excluding free and invoice. In order to set up this configuration, please contact Mediaconnect by sending an email to Support at Mediaconnect. Some of the payment providers support recurring payment and prepayment, see the table below.\n\n<table>\n  <tr>\n    <th>paymentMethod</th>\n    <th> recurring=true</th>\n    <th>recurring=false</th>\n    <th>prepaid=true</th>\n    <th>prepaid=false</th>\n  </tr>\n  <tr>\n    <td>invoice</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td></td>\n    <td>&#x2714;</td>\n  </tr>\n  <tr>\n    <td>sms (Link Mobility)</td>\n    <td>&#x2714;</td>\n    <td></td>\n    <td></td>\n    <td>&#x2714;</td>\n  </tr>\n  <tr>\n    <td>smsPay</td>\n    <td></td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td></td>\n  </tr>\n  <tr>\n    <td>vippsRecurring <br/>(Faste betalinger med Vipps)</td>\n    <td>&#x2714;</td>\n    <td></td>\n    <td></td>\n    <td>&#x2714;</td>\n  </tr>\n  <tr>\n    <td>kco (Klarna)</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n  </tr>\n  <tr>\n    <td>creditcardPayex</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n  </tr>\n  <tr>\n    <td>swishPayex</td>\n    <td></td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n  </tr>\n    <tr>\n    <td>vippsEcommerce <br> (single payment)</td>\n    <td></td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n  </tr>\n<tr>\n   <td>nexi</td>\n    <td>&#x2714</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td>&#x2714</td>\n  </tr>\n<<tr>\n   <td>other</td>\n    <td></td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td></td>\n  </tr>\n</table>\n\n**Commonly required fields:**\n\n* `companyName` or `lastName`\n* `postalCode`\n* `emails` or `phoneNumbers`\n\nAfter placing an order to the client order API, the order needs to be fulfilled. This can be done either with a redirect or using an API call.\nThe specific use-case dictates whether how the fulfillment process can be performed. If the fulfillment includes an interactive payment process (e.g. card payment), the redirect must be used. If the order is prepaid, or does not involve the user for payment (e.g. invoice), the API for fulfillment may be used.\n\nFor the redirect case, the user must be redirected to the URL for fulfillment (https://connectid.no/user/fulfillment or https://connectid.se/user/fulfillment). Depending on the payment method on the order the user will be further redirected to an external payment service.\nRead more about [fulfillment URL](https://mediaconnect-api.redoc.ly/#section/About-the-URLs/URL:-fulfillment).\n\nThe API endpoint for fulfillment is described [here](Fulfillment#operation/completeorder).\n",
+        "description": "Only the client needs to be logged in to use this endpoint. The user does not need to be logged in, [click here](mediaconnect-api-reference-934439m0#about-the-client-mode) to read more.\n\nAPI for creating an order. The order can contain one or more lines. Each line may contain a receiver. If Marketing coupon is used both marketing coupon, i.e `marketingCouponCode` and `marketingCouponNumber`, fields are required.\n\nThere are several possible payment methods. Payment provider configuration is needed to use these payment methods, excluding free and invoice. In order to set up this configuration, please contact Unite by sending an email to support@mediaconnect.no. Some of the payment providers support recurring payment and prepayment, see the table below.\n\n<table>\n  <tr>\n    <th>paymentMethod</th>\n    <th> recurring=true</th>\n    <th>recurring=false</th>\n    <th>prepaid=true</th>\n    <th>prepaid=false</th>\n  </tr>\n  <tr>\n    <td>invoice</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td></td>\n    <td>&#x2714;</td>\n  </tr>\n  <tr>\n    <td>sms (Link Mobility)</td>\n    <td>&#x2714;</td>\n    <td></td>\n    <td></td>\n    <td>&#x2714;</td>\n  </tr>\n  <tr>\n    <td>smsPay</td>\n    <td></td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td></td>\n  </tr>\n  <tr>\n    <td>vippsRecurring <br/>(Faste betalinger med Vipps)</td>\n    <td>&#x2714;</td>\n    <td></td>\n    <td></td>\n    <td>&#x2714;</td>\n  </tr>\n  <tr>\n    <td>kco (Klarna)</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n  </tr>\n  <tr>\n    <td>creditcardPayex</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n  </tr>\n  <tr>\n    <td>swishPayex</td>\n    <td></td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n  </tr>\n    <tr>\n    <td>vippsEcommerce <br> (single payment)</td>\n    <td></td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n  </tr>\n<tr>\n   <td>nexi</td>\n    <td>&#x2714</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td>&#x2714</td>\n  </tr>\n<<tr>\n   <td>other</td>\n    <td></td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td></td>\n  </tr>\n</table>\n\n**Commonly required fields:**\n\n* `companyName` or `lastName`\n* `postalCode`\n* `emails` or `phoneNumbers`\n\nAfter placing an order to the client order API, the order needs to be fulfilled. This can be done either with a redirect or using an API call.\nThe specific use-case dictates whether how the fulfillment process can be performed. If the fulfillment includes an interactive payment process (e.g. card payment), the redirect must be used. If the order is prepaid, or does not involve the user for payment (e.g. invoice), the API for fulfillment may be used.\n\nFor the redirect case, the user must be redirected to the URL for fulfillment (https://connectid.no/user/fulfillment or https://connectid.se/user/fulfillment). Depending on the payment method on the order the user will be further redirected to an external payment service.\nRead more about [fulfillment URL](https://mediaconnect-api.redoc.ly/#section/About-the-URLs/URL:-fulfillment).\n\nThe API endpoint for fulfillment is described [here](Fulfillment#operation/completeorder).\n",
         "operationId": "orderclient",
         "tags": [
           "Order"
@@ -3448,7 +3454,7 @@
       "post": {
         "summary": "Register order",
         "deprecated": false,
-        "description": "The user needs to be logged in to use this endpoint, [click here](mediaconnect-api-reference-934439m0#about-the-api) to read more.\n\nAPI for creating an order. The order can contain one or more lines. Each line may contain a receiver. If Marketing coupon is used both marketing coupon, i.e `marketingCouponCode` and `marketingCouponNumber`, fields are required. \n\nThere are several possible payment methods. Payment provider configuration is needed to use these payment methods, excluding free and invoice. In order to set up this configuration, please contact Mediaconnect by sending an email to Support at Mediaconnect. Some of the payment providers support recurring payment and prepayment, see the table below.\n\n<table>\n  <tr>\n    <th>paymentMethod</th>\n    <th> recurring=true</th>\n    <th>recurring=false</th>\n    <th>prepaid=true</th>\n    <th>prepaid=false</th>\n  </tr>\n  <tr>\n    <td>invoice</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td></td>\n    <td>&#x2714;</td>\n  </tr>\n  <tr>\n    <td>sms (Link Mobility)</td>\n    <td>&#x2714;</td>\n    <td></td>\n    <td></td>\n    <td>&#x2714;</td>\n  </tr>\n  <tr>\n    <td>smsPay</td>\n    <td></td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td></td>\n  </tr>\n  <tr>\n    <td>vippsRecurring <br/>(Faste betalinger med Vipps)</td>\n    <td>&#x2714;</td>\n    <td></td>\n    <td></td>\n    <td>&#x2714;</td>\n  </tr>\n  <tr>\n    <td>kco (Klarna)</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n  </tr>\n  <tr>\n    <td>creditcardPayex</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n  </tr>\n  <tr>\n    <td>swishPayex</td>\n    <td></td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n  </tr>\n  <tr>\n    <td>vippsEcommerce <br> (single payment)</td>\n    <td></td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n  </tr>\n  <tr>\n    <td>nexi</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n  </tr>\n  <tr>\n    <td>other</td>\n    <td></td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td></td>\n  </tr>\n</table>\n\n**Commonly required fields:**\n\n* `companyName` or `lastName`\n* `postalCode`\n* `emails` or `phoneNumbers`\n\nAfter placing an order to the client order API, the order needs to be fulfilled. This can be done either with a redirect or using an API call.\nThe specific use-case dictates whether how the fulfillment process can be performed. If the fulfillment includes an interactive payment process (e.g. card payment), the redirect must be used. If the order is prepaid, or does not involve the user for payment (e.g. invoice), the API for fulfillment may be used.\n\nFor the redirect case, the user must be redirected to the URL for fulfillment (https://connectid.no/user/fulfillment or https://connectid.se/user/fulfillment). Depending on the payment method on the order the user will be further redirected to an external payment service.\nRead more about [fulfillment URL](https://mediaconnect-api.redoc.ly/#section/About-the-URLs/URL:-fulfillment).\n\nThe API endpoint for fulfillment is described [here](Fulfillment#operation/completeorder).",
+        "description": "The user needs to be logged in to use this endpoint, [click here](mediaconnect-api-reference-934439m0#about-the-api) to read more.\n\nAPI for creating an order. The order can contain one or more lines. Each line may contain a receiver. If Marketing coupon is used both marketing coupon, i.e `marketingCouponCode` and `marketingCouponNumber`, fields are required. \n\nThere are several possible payment methods. Payment provider configuration is needed to use these payment methods, excluding free and invoice. In order to set up this configuration, please contact Unite by sending an email to support@mediaconnect.no Some of the payment providers support recurring payment and prepayment, see the table below.\n\n<table>\n  <tr>\n    <th>paymentMethod</th>\n    <th> recurring=true</th>\n    <th>recurring=false</th>\n    <th>prepaid=true</th>\n    <th>prepaid=false</th>\n  </tr>\n  <tr>\n    <td>invoice</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td></td>\n    <td>&#x2714;</td>\n  </tr>\n  <tr>\n    <td>sms (Link Mobility)</td>\n    <td>&#x2714;</td>\n    <td></td>\n    <td></td>\n    <td>&#x2714;</td>\n  </tr>\n  <tr>\n    <td>smsPay</td>\n    <td></td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td></td>\n  </tr>\n  <tr>\n    <td>vippsRecurring <br/>(Faste betalinger med Vipps)</td>\n    <td>&#x2714;</td>\n    <td></td>\n    <td></td>\n    <td>&#x2714;</td>\n  </tr>\n  <tr>\n    <td>kco (Klarna)</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n  </tr>\n  <tr>\n    <td>creditcardPayex</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n  </tr>\n  <tr>\n    <td>swishPayex</td>\n    <td></td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n  </tr>\n    <tr>\n    <td>vippsEcommerce <br> (single payment)</td>\n    <td></td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n  </tr>\n<tr>\n   <td>nexi</td>\n    <td>&#x2714</td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td>&#x2714</td>\n  </tr>\n<<tr>\n   <td>other</td>\n    <td></td>\n    <td>&#x2714;</td>\n    <td>&#x2714;</td>\n    <td></td>\n  </tr>\n</table>\n\n**Commonly required fields:**\n\n* `companyName` or `lastName`\n* `postalCode`\n* `emails` or `phoneNumbers`\n\nAfter placing an order to the client order API, the order needs to be fulfilled. This can be done either with a redirect or using an API call.\nThe specific use-case dictates whether how the fulfillment process can be performed. If the fulfillment includes an interactive payment process (e.g. card payment), the redirect must be used. If the order is prepaid, or does not involve the user for payment (e.g. invoice), the API for fulfillment may be used.\n\nFor the redirect case, the user must be redirected to the URL for fulfillment (https://connectid.no/user/fulfillment or https://connectid.se/user/fulfillment). Depending on the payment method on the order the user will be further redirected to an external payment service.\nRead more about [fulfillment URL](https://mediaconnect-api.redoc.ly/#section/About-the-URLs/URL:-fulfillment).\n\nThe API endpoint for fulfillment is described [here](Fulfillment#operation/completeorder).",
         "operationId": "order",
         "tags": [
           "Order"
@@ -4349,7 +4355,7 @@
       "post": {
         "summary": "Assign user - client mode",
         "deprecated": false,
-        "description": "Only the client needs to be logged in to use this endpoint. The user does not need to be logged in, [click here](mediaconnect-api-reference-934439m0#about-the-client-mode) to read more.\n\nUsing this endepoint requires configuration of LOGIN_BASE_URL. If `isSendMessage` is true, then `overrideClientId` is required. You may check if the credentials (phone number/email) already exits in ConnectID by using [Check credential](check-credential-client-mode-15815860e0) - client mode API.\n\nUse this API to assign user to a previously fulfilled order. If the order was registered using the client order API, you have the option to attach the order to a ConnectID user with a specified credential. To perform this action you provide the `credential`.\n\nThe previously created order is attached to the ConnectID user that is specified with the given credential on request. If no user does exist, it will be created based on the provided credential.\nThe user is notified on the attachment via an email or an SMS message if `isSendMessage` is set as true. The message is composed using a template that must be configured by Mediaconnect support. A part of this message is a link that the user must click in order to login (for existing users) or set password (for new users). This means that you also must supply the `returnUrl` and `errorUrl`. These urls are used by our systems to generate the link in the message.\n\nSending of email/SMS is asynchronous. Messages that are sent to the user may be customized for SMS/email. In addition messages may be different for new users that needs to set password or existing users with direct link to login.",
+        "description": "Only the client needs to be logged in to use this endpoint. The user does not need to be logged in, [click here](mediaconnect-api-reference-934439m0#about-the-client-mode) to read more.\n\nUsing this endepoint requires configuration of LOGIN_BASE_URL. If `isSendMessage` is true, then `overrideClientId` is required. You may check if the credentials (phone number/email) already exits in ConnectID by using [Check credential](check-credential-client-mode-15815860e0) - client mode API.\n\nUse this API to assign user to a previously fulfilled order. If the order was registered using the client order API, you have the option to attach the order to a ConnectID user with a specified credential. To perform this action you provide the `credential`.\n\nThe previously created order is attached to the ConnectID user that is specified with the given credential on request. If no user does exist, it will be created based on the provided credential.\nThe user is notified on the attachment via an email or an SMS message if `isSendMessage` is set as true. The message is composed using a template that must be configured by Unite support. A part of this message is a link that the user must click in order to login (for existing users) or set password (for new users). This means that you also must supply the `returnUrl` and `errorUrl`. These urls are used by our systems to generate the link in the message.\n\nSending of email/SMS is asynchronous. Messages that are sent to the user may be customized for SMS/email. In addition messages may be different for new users that needs to set password or existing users with direct link to login.",
         "operationId": "assignuser",
         "tags": [
           "User"
@@ -4774,7 +4780,6 @@
         "security": [
           {
             "Client_Credentials_Production": [
-              "read",
               "read"
             ]
           }
@@ -7074,7 +7079,6 @@
         "security": [
           {
             "Client_Credentials_Production": [
-              "read",
               "read"
             ]
           }
@@ -7441,7 +7445,6 @@
         "security": [
           {
             "Client_Credentials_Production": [
-              "read",
               "read"
             ]
           }
@@ -9154,7 +9157,6 @@
         "security": [
           {
             "Client_Credentials_Production": [
-              "read",
               "read"
             ]
           }
@@ -10183,7 +10185,6 @@
         "security": [
           {
             "Client_Credentials_Production": [
-              "read",
               "read"
             ]
           }
@@ -11092,7 +11093,6 @@
         "security": [
           {
             "Client_Credentials_Production": [
-              "read",
               "read"
             ]
           }
@@ -11201,7 +11201,6 @@
         "security": [
           {
             "Client_Credentials_Production": [
-              "read",
               "read"
             ]
           }
@@ -11364,7 +11363,6 @@
         "security": [
           {
             "Client_Credentials_Production": [
-              "read",
               "read"
             ]
           }
@@ -12150,7 +12148,7 @@
               "example": {
                 "product": "CO27409",
                 "articleId": "578943434",
-                "domain": "mediaconnect.no",
+                "domain": "unite.no",
                 "ip": "127.0.0.1",
                 "categoryType": "SWISJ",
                 "accessAzureAd": true,
@@ -12273,7 +12271,7 @@
               "example": {
                 "product": "CO27409",
                 "articleId": "578943434",
-                "domain": "mediaconnect.no",
+                "domain": "unite.no",
                 "ip": "127.0.0.1",
                 "categoryType": "SWISJ",
                 "accessAzureAd": true,
@@ -12372,7 +12370,6 @@
         "security": [
           {
             "Client_Credentials_Production": [
-              "read",
               "read"
             ]
           }
@@ -12708,7 +12705,6 @@
         "security": [
           {
             "Client_Credentials_Production": [
-              "read",
               "read"
             ]
           }
@@ -13128,7 +13124,6 @@
         "security": [
           {
             "Client_Credentials_Production": [
-              "read",
               "read"
             ]
           }
@@ -13628,7 +13623,6 @@
         "security": [
           {
             "Client_Credentials_Production": [
-              "read",
               "read"
             ]
           }
@@ -13791,7 +13785,6 @@
         "security": [
           {
             "Client_Credentials_Production": [
-              "read",
               "read"
             ]
           }
@@ -15034,14 +15027,15 @@
             }
           },
           "externalSources": {
-            "description": "Available profile data from external sources, possible values:\r\n* **Facebook**\r\n* **Google**\r\n* **Vipps**\r\n* **Apple**",
+            "description": "Available profile data from external sources, possible values:\n* **Facebook**\n* **Google**\n* **Vipps**\n* **Apple**\n* **AID**",
             "type": "array",
             "items": {
               "enum": [
                 "Facebook",
                 "Google",
                 "Vipps",
-                "Apple"
+                "Apple",
+                "AID"
               ],
               "type": "string"
             }
@@ -16071,6 +16065,31 @@
                       "type": "string"
                     }
                   }
+                },
+                "marketing": {
+                  "type": "object",
+                  "properties": {
+                    "project": {
+                      "type": "string",
+                      "description": "Project code",
+                      "maxLength": 18
+                    },
+                    "market": {
+                      "type": "string",
+                      "description": "Market code",
+                      "maxLength": 12
+                    },
+                    "activity": {
+                      "type": "string",
+                      "description": "Activity code",
+                      "maxLength": 18
+                    },
+                    "salesMethod": {
+                      "type": "string",
+                      "description": "Method of sales",
+                      "maxLength": 12
+                    }
+                  }
                 }
               }
             }
@@ -16402,7 +16421,7 @@
         "type": "object",
         "properties": {
           "orderId": {
-            "description": "Mediaconnect ConnectID order id",
+            "description": "Unite ConnectID order id",
             "type": "integer"
           },
           "externalOrderId": {
@@ -16422,7 +16441,7 @@
               "type": "object",
               "properties": {
                 "orderId": {
-                  "description": "Mediaconnect ConnectID order id",
+                  "description": "Unite ConnectID order id",
                   "type": "integer"
                 },
                 "externalOrderId": {
@@ -18992,14 +19011,15 @@
               "type": "object",
               "properties": {
                 "source": {
-                  "description": "Profile data external source, possible values:\n* **Facebook**: Profile information from Facebook.\n* **Google**: Profile information from Google.\n* **Vipps**: Profile information from Vipps.\n* **Apple**: Profile information from Apple.",
+                  "type": "string",
+                  "description": "Profile data external source, possible values:\n* **Facebook**: Profile information from Facebook.\n* **Google**: Profile information from Google.\n* **Vipps**: Profile information from Vipps.\n* **Apple**: Profile information from Apple.\n* **AID**: Profile information from AID.",
                   "enum": [
                     "Facebook",
                     "Google",
                     "Vipps",
-                    "Apple"
-                  ],
-                  "type": "string"
+                    "Apple",
+                    "AID"
+                  ]
                 },
                 "info": {
                   "description": "profile information",
@@ -20073,7 +20093,8 @@
           "orderAmount",
           "currency",
           "payer",
-          "orderLines"
+          "orderLines",
+          "uniqueUserId"
         ],
         "type": "object",
         "properties": {
@@ -20142,6 +20163,10 @@
             "description": "Customer reference number.",
             "maxLength": 78,
             "type": "string"
+          },
+          "uniqueUserId": {
+            "type": "string",
+            "description": "Unique ID (from Profile API)"
           },
           "seller": {
             "description": "Seller code representing the salesperson who made this order come true.",
@@ -20628,7 +20653,7 @@
             }
           },
           "mcPayRef": {
-            "description": "McPay transaction id. Specify it if the order was prepaid using McPay.",
+            "description": "UnitePay (McPay) transaction id. Specify it if the order was prepaid using UnitePay.",
             "type": "string"
           },
           "shareCode": {
