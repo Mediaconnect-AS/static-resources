@@ -49,7 +49,7 @@
 
 .guiVersion2 #loginForm .outerFrame {
     /*padding-top: 20px;*/
-    padding-top: 30px;
+    padding-top: 130px;
 }
 
 .socialLoginWide {
@@ -198,6 +198,7 @@ input:focus {
 
     .loginFrame {
         width: 420px;
+        margin-top: -110px;
     }
 
     .guiVersion2 #loginForm {
@@ -234,7 +235,7 @@ input:focus {
 @media only screen and (max-width: 479px) {
     HTML, BODY, #loginForm, .outerFrame {
         margin: 0;
-        padding-top: 50px;
+        padding-top: 52px;
         background-color: #fbfbfb;
     }
 
