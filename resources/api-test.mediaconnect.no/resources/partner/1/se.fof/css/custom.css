@@ -248,6 +248,7 @@ input:focus {
 
     .loginFrame {
         width: 100%;
+        border: 2px solid #e8530f;
     }
 
     .guiVersion2 #loginForm {
@@ -275,6 +276,11 @@ input:focus {
         padding: 30px;
         font-weight: 700;
         font-size: 1.2em;
+    }
+
+    .guiVersion2 .par .orLoginWith {
+        padding-left: 75px !important;
+        width: auto !important;
     }
 }
 
