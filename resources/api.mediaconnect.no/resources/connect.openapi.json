@@ -12148,9 +12148,9 @@
               "example": {
                 "product": "CO27409",
                 "articleId": "578943434",
-                "domain": "unite.no",
+                "domain": "unite.as",
                 "ip": "127.0.0.1",
-                "categoryType": "SWISJ",
+                "categoryType": "SWISH",
                 "accessAzureAd": true,
                 "accessAidFamily": true,
                 "uniqueId": "6ba7b8149dad11d180b400c04fd430c8",
@@ -12271,9 +12271,9 @@
               "example": {
                 "product": "CO27409",
                 "articleId": "578943434",
-                "domain": "unite.no",
+                "domain": "unite.as",
                 "ip": "127.0.0.1",
-                "categoryType": "SWISJ",
+                "categoryType": "SWISH",
                 "accessAzureAd": true,
                 "accessAidFamily": true,
                 "uniqueId": "6ba7b8149dad11d180b400c04fd430c8",
@@ -12659,7 +12659,17 @@
         "tags": [
           "Metadata"
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "userUniqueId",
+            "in": "query",
+            "description": "A unique ID for this user which will never change. Same as uniqueId in List user profile API.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -12717,7 +12727,17 @@
         "tags": [
           "Metadata"
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "userUniqueId",
+            "in": "query",
+            "description": "A unique ID for this user which will never change. Same as uniqueId in List user profile API.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -12787,7 +12807,17 @@
         "tags": [
           "Metadata"
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "userUniqueId",
+            "in": "query",
+            "description": "A unique ID for this user which will never change. Same as uniqueId in List user profile API.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
