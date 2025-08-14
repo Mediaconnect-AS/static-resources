@@ -13906,9 +13906,7 @@
           "status": {
             "description": "The value “ok” if the request was received successfully.",
             "type": "string",
-            "examples": [
-              "ok"
-            ]
+            "example": "ok"
           }
         }
       },
@@ -14247,13 +14245,11 @@
             "type": "string"
           }
         },
-        "examples": [
-          {
-            "uniqueId": "33ddb545-a88f-4e5d-906d-5af03e9a8dd1",
-            "exceptionType": "SEVERE",
-            "errorMessage": "Error message here, i.e unhandled exception"
-          }
-        ]
+        "example": {
+          "uniqueId": "33ddb545-a88f-4e5d-906d-5af03e9a8dd1",
+          "exceptionType": "SEVERE",
+          "errorMessage": "Error message here, i.e unhandled exception"
+        }
       },
       "Error400": {
         "description": "",
@@ -14277,13 +14273,11 @@
             "type": "string"
           }
         },
-        "examples": [
-          {
-            "uniqueId": "33ddb545-a88f-4e5d-906d-5af03e9a8dd1",
-            "exceptionType": "VALIDATION",
-            "errorMessage": "Error message here, e.g. missing field"
-          }
-        ]
+        "example": {
+          "uniqueId": "33ddb545-a88f-4e5d-906d-5af03e9a8dd1",
+          "exceptionType": "VALIDATION",
+          "errorMessage": "Error message here, e.g. missing field"
+        }
       },
       "Error403": {
         "description": "",
@@ -14305,13 +14299,11 @@
             "type": "string"
           }
         },
-        "examples": [
-          {
-            "uniqueId": "33ddb545-a88f-4e5d-906d-5af03e9a8dd1",
-            "exceptionType": "VALIDATION",
-            "errorMessage": "Try to narrow down your search with more information."
-          }
-        ]
+        "example": {
+          "uniqueId": "33ddb545-a88f-4e5d-906d-5af03e9a8dd1",
+          "exceptionType": "VALIDATION",
+          "errorMessage": "Try to narrow down your search with more information."
+        }
       },
       "ListVoucherCodeCouponsClientMode-response": {
         "description": "",
@@ -15395,13 +15387,11 @@
             "type": "string"
           }
         },
-        "examples": [
-          {
-            "uniqueId": "33ddb545-a88f-4e5d-906d-5af03e9a8dd1",
-            "exceptionType": "VALIDATION",
-            "errorMessage": "Error message here, e.g. missing field"
-          }
-        ]
+        "example": {
+          "uniqueId": "33ddb545-a88f-4e5d-906d-5af03e9a8dd1",
+          "exceptionType": "VALIDATION",
+          "errorMessage": "Error message here, e.g. missing field"
+        }
       },
       "PayInvoice-request": {
         "description": "",
@@ -15621,12 +15611,10 @@
             "type": "string"
           }
         },
-        "examples": [
-          {
-            "product": "ABC",
-            "distributionLevel": "N"
-          }
-        ]
+        "example": {
+          "product": "ABC",
+          "distributionLevel": "N"
+        }
       },
       "Model-SubscriptionShare-response": {
         "required": [
@@ -18423,11 +18411,9 @@
             "type": "array",
             "items": {
               "type": "string",
-              "examples": [
-                [
-                  4798765432,
-                  "kari.nordmann@gmail.com"
-                ]
+              "example": [
+                4798765432,
+                "kari.nordmann@gmail.com"
               ]
             }
           }
