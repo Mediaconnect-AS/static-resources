@@ -4521,11 +4521,515 @@
         ]
       }
     },
+    "/v1/customer/invoice": {
+      "get": {
+        "summary": "List basic invoice info",
+        "deprecated": false,
+        "description": "The user needs to be logged in to use this endpoint, [click here](mediaconnect-api-reference-934439m0#about-the-api) to read more.\n\nBasic information about invoices for all products. It contains no details about the invoices.\nThis API returns a list of basic invoice info ordered by decending invoice date.",
+        "tags": [
+          "Invoice"
+        ],
+        "parameters": [
+          {
+            "name": "includeUnpaid",
+            "in": "query",
+            "description": "Specifies if invoices returned should include unpaid invoices\n\n- **true**: The invoice list includes all invoices.\n- **false**: The invoice list only includes paid invoices.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "fromDate",
+            "in": "query",
+            "description": " If date is specified, then from this date will be invoices/payments returned. Format: YYYY-MM-DD",
+            "required": false,
+            "schema": {
+              "format": "date",
+              "type": "string"
+            }
+          },
+          {
+            "name": "toDate",
+            "in": "query",
+            "description": "If date is specified then up this date will be returned invoices/payments.\nFormat: YYYY-MM-DD",
+            "required": false,
+            "schema": {
+              "format": "date",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListBasicInvoiceInfo-response"
+                },
+                "example": {
+                  "invoices": [
+                    {
+                      "invoiceNumber": 1234,
+                      "companyCode": "COMP",
+                      "invoiceOfferCount": 1,
+                      "invoiceDate": "2019-06-12",
+                      "invoicePaymentStatus": "paid",
+                      "invoiceAmount": 295,
+                      "invoiceCurrency": "NOK",
+                      "invoiceHotelUrl": "http://mediaconnect.no/invoice/view/gkcb93qgt94ca6943bloitxgq4de",
+                      "invoiceDueDate": "2019-07-17",
+                      "invoiceType": "invoice",
+                      "paidAmount": 295,
+                      "description": "Weekly Magazine",
+                      "fromTime": "2019-06-12",
+                      "includeTime": "2019-06-12"
+                    }
+                  ]
+                }
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error400"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error404"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "headers": {}
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error500"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "Authorization_Code_Production": [
+              "read"
+            ]
+          }
+        ]
+      }
+    },
+    "/v1/customer/invoice/{productCode}": {
+      "get": {
+        "summary": "List basic invoice info for product",
+        "deprecated": false,
+        "description": "The user needs to be logged in to use this endpoint, [click here](mediaconnect-api-reference-934439m0#about-the-api) to read more.\n\nBasic information about invoices for a specific product. It contains no details about the invoices.\nThis API returns a list of basic invoice info ordered by decending invoice date.",
+        "tags": [
+          "Invoice"
+        ],
+        "parameters": [
+          {
+            "name": "productCode",
+            "in": "path",
+            "description": "Product code",
+            "required": true,
+            "example": "",
+            "schema": {
+              "maxLength": 12,
+              "type": "string"
+            }
+          },
+          {
+            "name": "includeUnpaid",
+            "in": "query",
+            "description": "Specifies if invoices returned should include unpaid invoices\n\n- **true**: The invoice list includes all invoices.\n- **false**: The invoice list only includes paid invoices.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "fromDate",
+            "in": "query",
+            "description": "If date is specified, then from this date will be invoices/payments returned. \nSpecify the date in format: YYYY-MM-DD",
+            "required": false,
+            "schema": {
+              "format": "date",
+              "type": "string"
+            }
+          },
+          {
+            "name": "toDate",
+            "in": "query",
+            "description": "If date is specified then up this date will be returned invoices/payments.\nSpecify the date in format: YYYY-MM-DD",
+            "required": false,
+            "schema": {
+              "format": "date",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListBasicInvoiceInfo-response"
+                },
+                "example": {
+                  "invoices": [
+                    {
+                      "invoiceNumber": 1234,
+                      "companyCode": "COMP",
+                      "invoiceOfferCount": 1,
+                      "invoiceDate": "2019-06-12",
+                      "invoicePaymentStatus": "paid",
+                      "invoiceAmount": 295,
+                      "invoiceCurrency": "NOK",
+                      "invoiceHotelUrl": "http://mediaconnect.no/invoice/view/gkcb93qgt94ca6943bloitxgq4de",
+                      "invoiceDueDate": "2019-07-17",
+                      "invoiceType": "invoice",
+                      "paidAmount": 295,
+                      "description": "Weekly Magazine",
+                      "fromTime": "2019-06-12",
+                      "includeTime": "2019-06-12"
+                    }
+                  ]
+                }
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error400"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error404"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "headers": {}
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error500"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "Authorization_Code_Production": [
+              "read"
+            ]
+          }
+        ]
+      }
+    },
+    "/v1/customer/invoice/payment": {
+      "get": {
+        "summary": "List invoices and reminders",
+        "deprecated": false,
+        "description": "The user needs to be logged in to use this endpoint, [click here](mediaconnect-api-reference-934439m0#about-the-api) to read more.\n\nIt shows a list of all invoices, including paid or/and unpaid invoices and reminders.\nIn response is returned list of invoiced products for customer. This is also payments info if paid amount is specified.",
+        "tags": [
+          "Invoice"
+        ],
+        "parameters": [
+          {
+            "name": "unpaid",
+            "in": "query",
+            "description": "Specifies if invoices returned should include unpaid invoices\n\n- **true**: The invoice list includes all invoices.\n- **false**: The invoice list only includes paid invoices.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "description": "If date is specified, then from this date will be invoices/payments returned\r\n\r\nIf no dates are specified then will be returned last invoice for given (first) product on invoice.\r\n\r\n Specify the date in format: YYYY-MM-DD.",
+            "required": false,
+            "schema": {
+              "maxLength": 10,
+              "type": "string"
+            }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "description": "If date is specified then up this date will be returned invoices/payments.\r\n\r\n Specify the date in format: YYYY-MM-DD.",
+            "required": false,
+            "schema": {
+              "maxLength": 10,
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListInvoices-response"
+                },
+                "example": {
+                  "invoices": [
+                    {
+                      "customerNumber": 563457,
+                      "product": "CO27409",
+                      "invoiceOfferCount": "1",
+                      "productName": "Weekly Magazine",
+                      "amount": 49,
+                      "invoiceDate": "2022-01-07",
+                      "invoiceNumber": "7435367",
+                      "companyCode": "5646903690",
+                      "paymentDate": "2022-01-17",
+                      "dueDate": "2022-01-21",
+                      "paymentStatus": "0",
+                      "invoiceAmount": "295.00",
+                      "paidAmount": 0,
+                      "paymentMethod": "A",
+                      "invoiceHotelUrl": "http://mediaconnect.no/invoice/view/gkcb93qgt94ca6943bloitxgq4de",
+                      "invoiceStatus": "Invoiced"
+                    }
+                  ],
+                  "reminders": [
+                    {
+                      "invoiceNumber": 7435367,
+                      "product": "CO27409",
+                      "fromTime": "2023-01-01",
+                      "includeTime": "2024-01-01",
+                      "reminderDate": 1560333600000,
+                      "amount": 49,
+                      "dueDate": 1561716000000,
+                      "reminderNumber": 1,
+                      "reminderType": "reminder",
+                      "invoiceHotelUrl": "http://mediaconnect.no/invoice/view/gkcb93qgt94ca6943bloitxgq4de"
+                    }
+                  ]
+                }
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error400"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "headers": {}
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error500"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "Authorization_Code_Production": [
+              "read"
+            ]
+          }
+        ]
+      }
+    },
+    "/v1/customer/invoice/payment/{product}": {
+      "get": {
+        "summary": "List invoices and reminders for product",
+        "deprecated": false,
+        "description": "The user needs to be logged in to use this endpoint, [click here](mediaconnect-api-reference-934439m0#about-the-api) to read more.\n\nIt shows a list of invoices for a specific product, including paid or/and unpaid invoices and reminders.\nIn response is returned list of invoiced products for customer. This is also payments info if paid amount is specified.",
+        "tags": [
+          "Invoice"
+        ],
+        "parameters": [
+          {
+            "name": "product",
+            "in": "path",
+            "description": "product code",
+            "required": true,
+            "example": "",
+            "schema": {
+              "maxLength": 12,
+              "type": "string"
+            }
+          },
+          {
+            "name": "unpaid",
+            "in": "query",
+            "description": "Specifies if invoices returned should include unpaid invoices\n\n- **true**: The invoice list includes all invoices.\n- **false**: The invoice list only includes paid invoices.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "description": "If date is specified, then from this date will be invoices/payments returned\r\n\r\nIf no dates are specified then will be returned last invoice for given (first) product on invoice.\r\n\r\n Specify the date in format: YYYY-MM-DD.",
+            "required": false,
+            "schema": {
+              "maxLength": 10,
+              "type": "string"
+            }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "description": "If date is specified then up this date will be returned invoices/payments.\r\n\r\n Specify the date in format: YYYY-MM-DD.",
+            "required": false,
+            "schema": {
+              "maxLength": 10,
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListInvoices-response"
+                },
+                "example": {
+                  "invoices": [
+                    {
+                      "customerNumber": 563457,
+                      "product": "CO27409",
+                      "invoiceOfferCount": "1",
+                      "productName": "Weekly Magazine",
+                      "amount": 49,
+                      "invoiceDate": "2022-01-07",
+                      "invoiceNumber": "7435367",
+                      "companyCode": "5646903690",
+                      "paymentDate": "2022-01-17",
+                      "dueDate": "2022-01-21",
+                      "paymentStatus": "0",
+                      "invoiceAmount": "295.00",
+                      "paidAmount": 0,
+                      "paymentMethod": "A",
+                      "invoiceHotelUrl": "http://mediaconnect.no/invoice/view/gkcb93qgt94ca6943bloitxgq4de",
+                      "invoiceStatus": "Invoiced"
+                    }
+                  ],
+                  "reminders": [
+                    {
+                      "invoiceNumber": 7435367,
+                      "product": "CO27409",
+                      "fromTime": "2023-01-01",
+                      "includeTime": "2024-01-01",
+                      "reminderDate": 1560333600000,
+                      "amount": 49,
+                      "dueDate": 1561716000000,
+                      "reminderNumber": 1,
+                      "reminderType": "reminder",
+                      "invoiceHotelUrl": "http://mediaconnect.no/invoice/view/gkcb93qgt94ca6943bloitxgq4de"
+                    }
+                  ]
+                }
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error400"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "headers": {}
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error500"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "Authorization_Code_Production": [
+              "read"
+            ]
+          }
+        ]
+      }
+    },
     "/v1/customer/invoice/details": {
       "get": {
         "summary": "List invoice details",
         "deprecated": false,
-        "description": "The user needs to be logged in to use this endpoint, [click here](mediaconnect-api-reference-934439m0#about-the-api) to read more.\n\nRetrieves information regarding one invoice based on company code, invoice number and reminder number. Information about offers and details in the offer and lines are presented. ",
+        "description": "The user needs to be logged in to use this endpoint, [click here](mediaconnect-api-reference-934439m0#about-the-api) to read more.\n\nRetrieves invoice details regarding one specific invoice based on company code, invoice number and reminder number. Information about offers and details in the offer and lines are presented.",
         "tags": [
           "Invoice"
         ],
@@ -4926,510 +5430,6 @@
         "security": [
           {
             "Client_Credentials_Production": [
-              "read"
-            ]
-          }
-        ]
-      }
-    },
-    "/v1/customer/invoice/payment": {
-      "get": {
-        "summary": "List invoices and reminders",
-        "deprecated": false,
-        "description": "The user needs to be logged in to use this endpoint, [click here](mediaconnect-api-reference-934439m0#about-the-api) to read more.\n\nInvoice, invoice payments API for customer.\n\nIn response is returned list of invoiced products for customer. This is also payments info if paid amount is specified.",
-        "tags": [
-          "Invoice"
-        ],
-        "parameters": [
-          {
-            "name": "unpaid",
-            "in": "query",
-            "description": "Specifies if invoices returned should include unpaid invoices\n\n- **true**: The invoice list includes all invoices.\n- **false**: The invoice list only includes paid invoices.",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "name": "from",
-            "in": "query",
-            "description": "If date is specified, then from this date will be invoices/payments returned\r\n\r\nIf no dates are specified then will be returned last invoice for given (first) product on invoice.\r\n\r\n Specify the date in format: YYYY-MM-DD.",
-            "required": false,
-            "schema": {
-              "maxLength": 10,
-              "type": "string"
-            }
-          },
-          {
-            "name": "to",
-            "in": "query",
-            "description": "If date is specified then up this date will be returned invoices/payments.\r\n\r\n Specify the date in format: YYYY-MM-DD.",
-            "required": false,
-            "schema": {
-              "maxLength": 10,
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ListInvoices-response"
-                },
-                "example": {
-                  "invoices": [
-                    {
-                      "customerNumber": 563457,
-                      "product": "CO27409",
-                      "invoiceOfferCount": "1",
-                      "productName": "Weekly Magazine",
-                      "amount": 49,
-                      "invoiceDate": "2022-01-07",
-                      "invoiceNumber": "7435367",
-                      "companyCode": "5646903690",
-                      "paymentDate": "2022-01-17",
-                      "dueDate": "2022-01-21",
-                      "paymentStatus": "0",
-                      "invoiceAmount": "295.00",
-                      "paidAmount": 0,
-                      "paymentMethod": "A",
-                      "invoiceHotelUrl": "http://mediaconnect.no/invoice/view/gkcb93qgt94ca6943bloitxgq4de",
-                      "invoiceStatus": "Invoiced"
-                    }
-                  ],
-                  "reminders": [
-                    {
-                      "invoiceNumber": 7435367,
-                      "product": "CO27409",
-                      "fromTime": "2023-01-01",
-                      "includeTime": "2024-01-01",
-                      "reminderDate": 1560333600000,
-                      "amount": 49,
-                      "dueDate": 1561716000000,
-                      "reminderNumber": 1,
-                      "reminderType": "reminder",
-                      "invoiceHotelUrl": "http://mediaconnect.no/invoice/view/gkcb93qgt94ca6943bloitxgq4de"
-                    }
-                  ]
-                }
-              }
-            },
-            "headers": {}
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error400"
-                }
-              }
-            },
-            "headers": {}
-          },
-          "429": {
-            "description": "Too Many Requests",
-            "headers": {}
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error500"
-                }
-              }
-            },
-            "headers": {}
-          }
-        },
-        "security": [
-          {
-            "Authorization_Code_Production": [
-              "read"
-            ]
-          }
-        ]
-      }
-    },
-    "/v1/customer/invoice/payment/{product}": {
-      "get": {
-        "summary": "List invoices and reminders for product",
-        "deprecated": false,
-        "description": "The user needs to be logged in to use this endpoint, [click here](mediaconnect-api-reference-934439m0#about-the-api) to read more.\n\nInvoice, invoice payments API for customer.\n\nIn response is returned list of invoiced products for customer. This is also payments info if paid amount is specified.",
-        "tags": [
-          "Invoice"
-        ],
-        "parameters": [
-          {
-            "name": "product",
-            "in": "path",
-            "description": "product code",
-            "required": true,
-            "example": "",
-            "schema": {
-              "maxLength": 12,
-              "type": "string"
-            }
-          },
-          {
-            "name": "unpaid",
-            "in": "query",
-            "description": "Specifies if invoices returned should include unpaid invoices\n\n- **true**: The invoice list includes all invoices.\n- **false**: The invoice list only includes paid invoices.",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "name": "from",
-            "in": "query",
-            "description": "If date is specified, then from this date will be invoices/payments returned\r\n\r\nIf no dates are specified then will be returned last invoice for given (first) product on invoice.\r\n\r\n Specify the date in format: YYYY-MM-DD.",
-            "required": false,
-            "schema": {
-              "maxLength": 10,
-              "type": "string"
-            }
-          },
-          {
-            "name": "to",
-            "in": "query",
-            "description": "If date is specified then up this date will be returned invoices/payments.\r\n\r\n Specify the date in format: YYYY-MM-DD.",
-            "required": false,
-            "schema": {
-              "maxLength": 10,
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ListInvoices-response"
-                },
-                "example": {
-                  "invoices": [
-                    {
-                      "customerNumber": 563457,
-                      "product": "CO27409",
-                      "invoiceOfferCount": "1",
-                      "productName": "Weekly Magazine",
-                      "amount": 49,
-                      "invoiceDate": "2022-01-07",
-                      "invoiceNumber": "7435367",
-                      "companyCode": "5646903690",
-                      "paymentDate": "2022-01-17",
-                      "dueDate": "2022-01-21",
-                      "paymentStatus": "0",
-                      "invoiceAmount": "295.00",
-                      "paidAmount": 0,
-                      "paymentMethod": "A",
-                      "invoiceHotelUrl": "http://mediaconnect.no/invoice/view/gkcb93qgt94ca6943bloitxgq4de",
-                      "invoiceStatus": "Invoiced"
-                    }
-                  ],
-                  "reminders": [
-                    {
-                      "invoiceNumber": 7435367,
-                      "product": "CO27409",
-                      "fromTime": "2023-01-01",
-                      "includeTime": "2024-01-01",
-                      "reminderDate": 1560333600000,
-                      "amount": 49,
-                      "dueDate": 1561716000000,
-                      "reminderNumber": 1,
-                      "reminderType": "reminder",
-                      "invoiceHotelUrl": "http://mediaconnect.no/invoice/view/gkcb93qgt94ca6943bloitxgq4de"
-                    }
-                  ]
-                }
-              }
-            },
-            "headers": {}
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error400"
-                }
-              }
-            },
-            "headers": {}
-          },
-          "429": {
-            "description": "Too Many Requests",
-            "headers": {}
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error500"
-                }
-              }
-            },
-            "headers": {}
-          }
-        },
-        "security": [
-          {
-            "Authorization_Code_Production": [
-              "read"
-            ]
-          }
-        ]
-      }
-    },
-    "/v1/customer/invoice": {
-      "get": {
-        "summary": "List basic invoice info",
-        "deprecated": false,
-        "description": "The user needs to be logged in to use this endpoint, [click here](mediaconnect-api-reference-934439m0#about-the-api) to read more.\n\nThis API returns a list of basic invoice info ordered by decending invoice date.",
-        "tags": [
-          "Invoice"
-        ],
-        "parameters": [
-          {
-            "name": "includeUnpaid",
-            "in": "query",
-            "description": "Specifies if invoices returned should include unpaid invoices\n\n- **true**: The invoice list includes all invoices.\n- **false**: The invoice list only includes paid invoices.",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "name": "fromDate",
-            "in": "query",
-            "description": " If date is specified, then from this date will be invoices/payments returned. Format: YYYY-MM-DD",
-            "required": false,
-            "schema": {
-              "format": "date",
-              "type": "string"
-            }
-          },
-          {
-            "name": "toDate",
-            "in": "query",
-            "description": "If date is specified then up this date will be returned invoices/payments.\nFormat: YYYY-MM-DD",
-            "required": false,
-            "schema": {
-              "format": "date",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ListBasicInvoiceInfo-response"
-                },
-                "example": {
-                  "invoices": [
-                    {
-                      "invoiceNumber": 1234,
-                      "companyCode": "COMP",
-                      "invoiceOfferCount": 1,
-                      "invoiceDate": "2019-06-12",
-                      "invoicePaymentStatus": "paid",
-                      "invoiceAmount": 295,
-                      "invoiceCurrency": "NOK",
-                      "invoiceHotelUrl": "http://mediaconnect.no/invoice/view/gkcb93qgt94ca6943bloitxgq4de",
-                      "invoiceDueDate": "2019-07-17",
-                      "invoiceType": "invoice",
-                      "paidAmount": 295,
-                      "description": "Weekly Magazine",
-                      "fromTime": "2019-06-12",
-                      "includeTime": "2019-06-12"
-                    }
-                  ]
-                }
-              }
-            },
-            "headers": {}
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error400"
-                }
-              }
-            },
-            "headers": {}
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error404"
-                }
-              }
-            },
-            "headers": {}
-          },
-          "429": {
-            "description": "Too Many Requests",
-            "headers": {}
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error500"
-                }
-              }
-            },
-            "headers": {}
-          }
-        },
-        "security": [
-          {
-            "Authorization_Code_Production": [
-              "read"
-            ]
-          }
-        ]
-      }
-    },
-    "/v1/customer/invoice/{productCode}": {
-      "get": {
-        "summary": "List basic invoice info for product",
-        "deprecated": false,
-        "description": "The user needs to be logged in to use this endpoint, [click here](mediaconnect-api-reference-934439m0#about-the-api) to read more.\n\nThis API returns a list of basic invoice info ordered by decending invoice date.",
-        "tags": [
-          "Invoice"
-        ],
-        "parameters": [
-          {
-            "name": "productCode",
-            "in": "path",
-            "description": "Product code",
-            "required": true,
-            "example": "",
-            "schema": {
-              "maxLength": 12,
-              "type": "string"
-            }
-          },
-          {
-            "name": "includeUnpaid",
-            "in": "query",
-            "description": "Specifies if invoices returned should include unpaid invoices\n\n- **true**: The invoice list includes all invoices.\n- **false**: The invoice list only includes paid invoices.",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "name": "fromDate",
-            "in": "query",
-            "description": "If date is specified, then from this date will be invoices/payments returned. \nSpecify the date in format: YYYY-MM-DD",
-            "required": false,
-            "schema": {
-              "format": "date",
-              "type": "string"
-            }
-          },
-          {
-            "name": "toDate",
-            "in": "query",
-            "description": "If date is specified then up this date will be returned invoices/payments.\nSpecify the date in format: YYYY-MM-DD",
-            "required": false,
-            "schema": {
-              "format": "date",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ListBasicInvoiceInfo-response"
-                },
-                "example": {
-                  "invoices": [
-                    {
-                      "invoiceNumber": 1234,
-                      "companyCode": "COMP",
-                      "invoiceOfferCount": 1,
-                      "invoiceDate": "2019-06-12",
-                      "invoicePaymentStatus": "paid",
-                      "invoiceAmount": 295,
-                      "invoiceCurrency": "NOK",
-                      "invoiceHotelUrl": "http://mediaconnect.no/invoice/view/gkcb93qgt94ca6943bloitxgq4de",
-                      "invoiceDueDate": "2019-07-17",
-                      "invoiceType": "invoice",
-                      "paidAmount": 295,
-                      "description": "Weekly Magazine",
-                      "fromTime": "2019-06-12",
-                      "includeTime": "2019-06-12"
-                    }
-                  ]
-                }
-              }
-            },
-            "headers": {}
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error400"
-                }
-              }
-            },
-            "headers": {}
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error404"
-                }
-              }
-            },
-            "headers": {}
-          },
-          "429": {
-            "description": "Too Many Requests",
-            "headers": {}
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error500"
-                }
-              }
-            },
-            "headers": {}
-          }
-        },
-        "security": [
-          {
-            "Authorization_Code_Production": [
               "read"
             ]
           }
