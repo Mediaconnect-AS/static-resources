@@ -9,19 +9,20 @@
           display: none;
         }
 
-/* Target the heading by its ID */
+/* Keep borders intact, just hide text */
 #heading {
-  font-size: 0 !important;      /* hide the original text */
-  color: transparent !important;
+  color: transparent !important;   /* hide text */
   position: relative;
+  font-size: inherit !important;   /* keep original font size so borders remain */
 }
 
-/* Insert replacement text */
+/* Replacement text, aligned inline */
 #heading::after {
-  content: "Aktivera dig";      /* 👈 change this to whatever you want */
-  font-size: 24px;              /* adjust size */
-  color: #000;                  /* adjust color */
-  position: absolute;           /* keeps text in the same spot */
-  left: 0;
-  top: 0;
+  content: "Aktivera dig";         /* your replacement */
+  color: #000;                     /* visible text */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); /* center within the div */
+  font-size: 24px;                 /* match or adjust */
 }
