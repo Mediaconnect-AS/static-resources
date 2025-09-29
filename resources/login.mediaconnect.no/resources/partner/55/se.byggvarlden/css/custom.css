@@ -9,10 +9,13 @@
           display: none;
         }
 
-/* Keep element size + borders, just hide original text */
+/* Force borders to appear */
 #heading {
-  color: transparent !important;   /* hide text but keep box & borders */
+  color: transparent !important;   /* hide original text */
   position: relative;
+  border-top: 1px solid #000;      /* adjust color */
+  border-bottom: 1px solid #000;   /* adjust color */
+  padding: 10px 0;                 /* spacing so borders don't overlap text */
 }
 
 /* Replacement text centered */
@@ -22,8 +25,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* center within div */
-  font-size: inherit;              /* use same font size as original */
-  font-weight: inherit;            /* match weight */
-  font-family: inherit;            /* match font */
+  transform: translate(-50%, -50%);
+  font-size: inherit;
+  font-weight: inherit;
+  font-family: inherit;
 }
