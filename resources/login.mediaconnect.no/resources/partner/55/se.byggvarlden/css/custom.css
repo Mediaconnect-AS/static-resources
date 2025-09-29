@@ -8,3 +8,20 @@
 .guiVersion2 #credentialFieldDiv .label span#credentialDescriptionEmail {
           display: none;
         }
+
+/* Target the heading by its ID */
+#heading {
+  font-size: 0 !important;      /* hide the original text */
+  color: transparent !important;
+  position: relative;
+}
+
+/* Insert replacement text */
+#heading::after {
+  content: "Aktivera dig";      /* 👈 change this to whatever you want */
+  font-size: 24px;              /* adjust size */
+  color: #000;                  /* adjust color */
+  position: absolute;           /* keeps text in the same spot */
+  left: 0;
+  top: 0;
+}
