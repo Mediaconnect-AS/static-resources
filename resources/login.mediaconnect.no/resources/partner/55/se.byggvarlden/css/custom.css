@@ -11,21 +11,21 @@
 
 /* Replace "Registrera dig" heading with "Aktivera ditt konto" */
 #heading {
-  visibility: hidden;        /* hide original text */
-  position: relative;        /* needed for absolute positioning */
-  white-space: nowrap;       /* prevent wrapping */
+  color: transparent !important;  /* hide original text, but keep borders */
+  position: relative;
+  white-space: nowrap;            /* prevent wrapping */
 }
 
+/* Inject replacement text */
 #heading::after {
-  content: "Aktivera ditt konto"; /* replacement text */
-  visibility: visible;            /* make it show */
+  content: "Aktivera ditt konto"; /* replacement */
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* center horizontally & vertically */
-  font-size: inherit;             /* keep original size */
-  font-weight: inherit;           /* keep original weight */
-  font-family: inherit;           /* keep original font */
-  color: #000;                    /* set text color */
+  transform: translate(-50%, -50%);
+  font-size: inherit;             /* match original size */
+  font-weight: inherit;           /* match original weight */
+  font-family: inherit;           /* match original font */
+  color: #000;                    /* visible replacement text */
   white-space: nowrap;            /* keep on one line */
 }
