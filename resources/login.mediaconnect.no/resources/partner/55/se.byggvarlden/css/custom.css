@@ -20,7 +20,7 @@
 
 /* Replacement text centered */
 #heading::after {
-  content: "Aktivera konto";             /* your replacement */
+  content: "Aktivera ditt konto";             /* your replacement */
   color: #000;
   position: absolute;
   top: 50%;
