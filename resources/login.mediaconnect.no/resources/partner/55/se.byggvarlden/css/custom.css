@@ -9,23 +9,23 @@
           display: none;
         }
 
-/* Keep borders and layout, only hide the text color */
+/* Keep the wrapper intact (borders live here), only hide text inside */
 #heading {
-  color: transparent !important;   /* hide only the letters */
+  font-size: 0 !important;      /* makes the original text vanish */
+  line-height: 0 !important;
   position: relative;
-  white-space: nowrap;             /* prevent wrapping */
 }
 
-/* Replacement text overlay */
+/* Inject new text */
 #heading::after {
-  content: "Aktivera ditt konto";  /* new text */
+  content: "Aktivera ditt konto";
+  font-size: 24px;              /* adjust to match original */
+  font-weight: bold;
+  line-height: normal;
+  color: #000;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: inherit;
-  font-weight: inherit;
-  font-family: inherit;
-  color: #000;                     /* visible replacement */
-  white-space: nowrap;             /* force single line */
+  white-space: nowrap;          /* one row only */
 }
