@@ -9,24 +9,23 @@
           display: none;
         }
 
-/* Force borders to appear */
+/* Replace "Registrera dig" heading with "Aktivera ditt konto" */
 #heading {
-  color: transparent !important;   /* hide original text */
-  position: relative;
-  border-top: 1px solid #000;      /* adjust color */
-  border-bottom: 1px solid #000;   /* adjust color */
-  padding: 10px 0;                 /* spacing so borders don't overlap text */
+  visibility: hidden;        /* hide original text */
+  position: relative;        /* needed for absolute positioning */
+  white-space: nowrap;       /* prevent wrapping */
 }
 
-/* Replacement text centered */
 #heading::after {
-  content: "Aktivera ditt konto";             /* your replacement */
-  color: #000;
+  content: "Aktivera ditt konto"; /* replacement text */
+  visibility: visible;            /* make it show */
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: inherit;
-  font-weight: inherit;
-  font-family: inherit;
+  transform: translate(-50%, -50%); /* center horizontally & vertically */
+  font-size: inherit;             /* keep original size */
+  font-weight: inherit;           /* keep original weight */
+  font-family: inherit;           /* keep original font */
+  color: #000;                    /* set text color */
+  white-space: nowrap;            /* keep on one line */
 }
