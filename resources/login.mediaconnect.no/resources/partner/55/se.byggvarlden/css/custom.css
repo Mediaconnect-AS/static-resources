@@ -18,7 +18,7 @@
 
 /* Inject new text */
 #heading::after {
-  content: "Aktivera ditt konto";
+  content: "Verifiera ditt konto";
   font-size: 24px;              /* adjust to match original */
   font-weight: bold;
   line-height: normal;
