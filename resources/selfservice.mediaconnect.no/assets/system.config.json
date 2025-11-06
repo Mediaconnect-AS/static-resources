@@ -67,7 +67,8 @@
     "selfservice.firdatidend": "api/client/config?clientId=selfservice.firdatidend",
     "selfservice.hordalandfolkeblad": "api/client/config?clientId=selfservice.hordalandfolkeblad",
     "selfservice.vg": "api/client/config?clientId=selfservice.vg",
-    "selfservice.aftenposten": "api/client/config?clientId=selfservice.aftenposten"
+    "selfservice.aftenposten": "api/client/config?clientId=selfservice.aftenposten",
+    "selfservice.ryfylke": "api/client/config?clientId=selfservice.ryfylke"
   },
   "messages": {
     "default-message": {
