@@ -69,7 +69,7 @@
     "selfservice.vg": "api/client/config?clientId=selfservice.vg",
     "selfservice.aftenposten": "api/client/config?clientId=selfservice.aftenposten",
     "selfservice.ryfylke": "api/client/config?clientId=selfservice.ryfylke",
-    "selfservice.ryfylke": "api/client/config?clientId=selfservice.grannar"
+    "selfservice.grannar": "api/client/config?clientId=selfservice.grannar"
   },
   "messages": {
     "default-message": {
