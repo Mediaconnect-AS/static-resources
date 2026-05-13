@@ -29,22 +29,20 @@
   z-index: 9999;
 }
 
-.outerFrame:before{
+.outerFrame::before {
   content: "";
-
   display: block;
   width: 100vw;
-  height: 32px;
+  height: 70px;
   position: relative;
   left: 50%;
-  margin-bottom: 150px;
   transform: translateX(-50%);
+  margin-bottom: 50px;
   background-color: #fff;
-
   background-image: url("https://connectid.no/resources/partner/4/no.dagbladet/img/logos.svg");
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: contain;
+  background-size: auto calc(100% - 38px);
 }
 
 .guiVersion2 #loginForm {
@@ -106,15 +104,22 @@
     background-color: #f4f4f4;
   }
 
-  .outerFrame:before{
+
+  .outerFrame::before {
     content: "";
-    width: 120px;
-    margin-left: 90px;
-    padding-left: 20px;
-    padding-bottom: 40px;
-    background:url("https://connectid.no/resources/partner/4/no.dagbladet/img/logos.svg") no-repeat;
-    background-size: contain;
-    display: inline-block;
+    display: block;
+    width: 100%;
+    height: 60px;
+    position: relative;
+    left: 2%;
+    transform: translateX(-2%);
+    margin-bottom: 50px;
+    margin-top: -36px;
+    background-color: #fff;
+    background-image: url("https://connectid.no/resources/partner/4/no.dagbladet/img/logos.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: auto calc(100% - 28px);
   }
 
   .loginInner .logoDiv  {
