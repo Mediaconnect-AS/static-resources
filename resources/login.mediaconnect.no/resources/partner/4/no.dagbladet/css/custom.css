@@ -22,10 +22,10 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 116px;
-  padding: 10px 10px;
-  border-bottom: 2px solid #D60000;
-  background-color: #D60000;
+  height: 100px;
+  padding: 30px 10px;
+  border-bottom: 2px solid #f4f4f4;
+  background-color: #ffffff;
   z-index: 9999;
 }
 
@@ -36,13 +36,14 @@
   margin-left: 110px;
   padding-left: 20px;
   padding-bottom: 60px;
-  background:url("https://dev.mediaconnect.no/resources/partner/4/no.dagbladet/img/dagbladet-aller-logo.png") no-repeat;
+  background:url("https://connectid.no/resources/partner/4/no.dagbladet/img/logos.svg") no-repeat;
   background-size: contain;
   display: inline-block;
 }
 
 .logoDiv img.logo {
   padding: 0 9px;
+  min-width: 226px;
 }
 
 #loginForm {
@@ -101,7 +102,7 @@
     margin-left: 90px;
     padding-left: 20px;
     padding-bottom: 40px;
-    background:url("https://dev.mediaconnect.no/resources/partner/4/no.dagbladet/img/dagbladet-aller-logo.png") no-repeat;
+    background:url("https://connectid.no/resources/partner/4/no.dagbladet/img/logos.svg") no-repeat;
     background-size: contain;
     display: inline-block;
   }
@@ -112,14 +113,15 @@
     left: 0;
     width: 100%;
     height: 62px;
-    padding: 4px 4px;
-    border-bottom: 2px solid #D60000;
-    background-color: #D60000;
+    padding: 14px 4px;
+    border-bottom: 2px solid #f4f4f4;
+    background-color: #ffffff;
     z-index: 9999;
   }
 
   .logoDiv img.logo {
     padding: 6px 73px;
+    min-width: 226px;
   }
 
   .guiVersion2 .heading {
