@@ -31,14 +31,24 @@
 
 .outerFrame:before{
   content: "";
-  width: 180px;
-  margin-top: -23px;
-  margin-left: 110px;
-  padding-left: 20px;
-  padding-bottom: 60px;
-  background:url("https://connectid.no/resources/partner/4/no.dagbladet/img/logos.svg") no-repeat;
+
+  display: block;
+  width: 100vw;
+  height: 32px;
+  position: relative;
+  left: 50%;
+  margin-bottom: 150px;
+  transform: translateX(-50%);
+  background-color: #fff;
+
+  background-image: url("https://connectid.no/resources/partner/4/no.dagbladet/img/logos.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
   background-size: contain;
-  display: inline-block;
+}
+
+.guiVersion2 #loginForm {
+  margin: 0 auto 0 auto;
 }
 
 .logoDiv img.logo {
