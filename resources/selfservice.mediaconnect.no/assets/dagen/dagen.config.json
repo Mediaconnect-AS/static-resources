@@ -525,7 +525,7 @@
             "productKind": "*"
         },
         "cancelSubscriptionButton": {
-            "name": "STOPPA PRENUMERATIO N",
+            "name": "STOPPA PRENUMERATION",
             "visible": false,
             "productCodes": [
                 "DAG", "EKO", "WEB", "TAL", "NOD"
