@@ -1342,7 +1342,7 @@
             "in": "path",
             "description": "Customer number",
             "required": true,
-            "example": 0,
+            "example": "",
             "schema": {
               "type": "integer"
             }
@@ -1461,7 +1461,7 @@
             "in": "path",
             "description": "Customer number",
             "required": true,
-            "example": 0,
+            "example": "",
             "schema": {
               "type": "integer"
             }
@@ -1550,7 +1550,7 @@
             "in": "path",
             "description": "Customer number",
             "required": true,
-            "example": 0,
+            "example": "",
             "schema": {
               "type": "integer"
             }
@@ -1653,7 +1653,7 @@
             "in": "path",
             "description": "Customer number",
             "required": true,
-            "example": 0,
+            "example": "",
             "schema": {
               "type": "integer"
             }
@@ -1737,7 +1737,7 @@
             "in": "path",
             "description": "Customer number",
             "required": true,
-            "example": 0,
+            "example": "",
             "schema": {
               "type": "integer"
             }
@@ -5169,7 +5169,7 @@
             "in": "path",
             "description": "The customer number",
             "required": true,
-            "example": 0,
+            "example": "",
             "schema": {
               "type": "integer"
             }
@@ -5304,7 +5304,7 @@
             "in": "path",
             "description": "The customer number",
             "required": true,
-            "example": 0,
+            "example": "",
             "schema": {
               "type": "integer"
             }
@@ -10096,7 +10096,7 @@
             "in": "path",
             "description": "Customer number",
             "required": true,
-            "example": 0,
+            "example": "",
             "schema": {
               "type": "integer"
             }
@@ -10195,7 +10195,7 @@
       "post": {
         "summary": "Remove delivery stops",
         "deprecated": false,
-        "description": "The user needs to be logged in to use this endpoint, [click here](mediaconnect-api-reference-934439m0#about-the-api) to read more.\n\nIt is possible to delete a future stopp, i.e the stop periode can not be activated.\n\nThe endpoint returns a list of remaining furture stops after removed the furture stop you have chosen.",
+        "description": "The user needs to be logged in to use this endpoint, [click here](mediaconnect-api-reference-934439m0#about-the-api) to read more.\n\nIt is possible to delete a future stopp, i.e the stop periode can not be activated.\nThe endpoint returns a list of remaining furture stops after removed the furture stop you have chosen.\n\nIf you want to allow changes to a future stop, you can remove unstarted changes listed from List delivery stop API.",
         "tags": [
           "DeliveryStop"
         ],
@@ -10205,7 +10205,7 @@
             "in": "path",
             "description": "The unique id for the stop you want to delete.",
             "required": true,
-            "example": 0,
+            "example": "",
             "schema": {
               "type": "integer"
             }
@@ -10274,7 +10274,7 @@
       "post": {
         "summary": "Register delivery stops",
         "deprecated": false,
-        "description": "The user needs to be logged in to use this endpoint, [click here](mediaconnect-api-reference-934439m0#about-the-api) to read more.\n\nStop API for stopping delivery to a customer permanently or temporary.",
+        "description": "The user needs to be logged in to use this endpoint, [click here](mediaconnect-api-reference-934439m0#about-the-api) to read more.\n\nStop API for stopping delivery to a customer permanently or temporary.\nThis can also be used for updating a furture change.",
         "tags": [
           "DeliveryStop"
         ],
@@ -10362,7 +10362,7 @@
       "get": {
         "summary": "List delivery stops",
         "deprecated": false,
-        "description": "The user needs to be logged in to use this endpoint, [click here](mediaconnect-api-reference-934439m0#about-the-api) to read more.\n\nAPI is used to get stop registered on customer.",
+        "description": "The user needs to be logged in to use this endpoint, [click here](mediaconnect-api-reference-934439m0#about-the-api) to read more.\n\nAPI is used to get stop registered on customer.\n\nThis API can be called to list already registered future stops, either from selfservice or customer service, to avoid customers entering stops etc. multiple times.",
         "tags": [
           "DeliveryStop"
         ],
@@ -10454,7 +10454,7 @@
             "in": "path",
             "description": "Customer number linked to product delivery\r\n",
             "required": true,
-            "example": 0,
+            "example": "",
             "schema": {
               "type": "integer"
             }
@@ -11383,7 +11383,7 @@
             "in": "path",
             "description": "The unique id for productdeliveryplan",
             "required": true,
-            "example": 0,
+            "example": "",
             "schema": {
               "type": "integer"
             }
@@ -21310,6 +21310,11 @@
       }
     }
   },
-  "servers": [],
+  "servers": [
+    {
+      "url": "https://api.mediaconnect.no/capi",
+      "description": "Production"
+    }
+  ],
   "security": []
 }
