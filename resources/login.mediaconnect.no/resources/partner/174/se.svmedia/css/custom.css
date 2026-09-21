@@ -9,34 +9,3 @@
           display: none;
         }
 
-/* Keep the wrapper intact (borders live here), only hide text inside */
-#heading {
-  font-size: 0 !important;      /* makes the original text vanish */
-  line-height: 0 !important;
-  position: relative;
-}
-
-/* Inject new text */
-#heading::after {
-  content: "Verifiera ditt konto";
-  font-size: 24px;              /* adjust to match original */
-  font-weight: bold;
-  line-height: normal;
-  color: #000;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  white-space: nowrap;          /* one row only */
-}
-
-/* Restore default heading text ("Logga in") */
-.guiVersion2 #heading {
-    font-size: 24px !important;
-    line-height: normal !important;
-}
-
-.guiVersion2 #heading::after {
-    content: none !important;
-    display: none !important;
-}
